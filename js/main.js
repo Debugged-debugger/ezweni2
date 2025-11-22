@@ -3,87 +3,89 @@
 // Load common components
 function loadCommonComponents() {
     // Load header
-    const headerHTML = `
-        <header>
-            <div class="container header-container">
-                <div class="logo">
-                    <div class="logo-text">Ezweni</div>
-                    <div class="logo-subtext">Funerals (Pty) Ltd</div>
+const headerHTML = `
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-text">Ezweni</div>
+                <div class="logo-subtext">Funerals (Pty) Ltd</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="pre-planning.html">Pre-Planning</a></li>
+                    <li><a href="blog.html">Our Blog</a></li>
+                    <li><a href="appointment.html">Schedule Visit</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
                 </div>
-                <nav>
+            </nav>
+        </div>
+    </header>
+`;
+    
+    // Load footer
+    const footerHTML = `
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Ezweni Funerals</h3>
+                    <p>Providing compassionate, dignified funeral services with respect for all traditions and cultures.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/people/Ezweni-Funerals/61578321483864/#" class="social-link" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="services.html">Services</a></li>
                         <li><a href="pre-planning.html">Pre-Planning</a></li>
                         <li><a href="blog.html">Our Blog</a></li>
+                        <li><a href="appointment.html">Schedule Visit</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
-                    <div class="mobile-menu">
-                        <i class="fas fa-bars"></i>
-                    </div>
-                </nav>
-            </div>
-        </header>
-    `;
-    
-    // Load footer
-    const footerHTML = `
-        <footer>
-            <div class="container">
-                <div class="footer-container">
-                    <div class="footer-col">
-                        <h3>Ezweni Funerals</h3>
-                        <p>Providing compassionate, dignified funeral services with respect for all traditions and cultures.</p>
-                        <div class="social-links">
-                            <a href="https://www.facebook.com/people/Ezweni-Funerals/61578321483864/#" class="social-link" target="_blank">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a href="#" class="social-link">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="#" class="social-link">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="footer-col">
-                        <h3>Quick Links</h3>
-                        <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="about.html">About Us</a></li>
-                            <li><a href="services.html">Services</a></li>
-                            <li><a href="pre-planning.html">Pre-Planning</a></li>
-                            <li><a href="blog.html">Our Blog</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h3>Our Services</h3>
-                        <ul>
-                            <li><a href="services.html">Traditional Funerals</a></li>
-                            <li><a href="services.html">Green Funerals</a></li>
-                            <li><a href="services.html">Pre-Planning</a></li>
-                            <li><a href="services.html">Grief Support</a></li>
-                            <li><a href="services.html">Memorial Services</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h3>Contact Info</h3>
-                        <ul>
-                            <li><i class="fas fa-map-marker-alt"></i> 123 Memorial Drive, Johannesburg</li>
-                            <li><i class="fas fa-phone"></i> +27 11 123 4567</li>
-                            <li><i class="fas fa-envelope"></i> info@ezwenifunerals.co.za</li>
-                            <li><i class="fas fa-clock"></i> 24/7 Availability</li>
-                        </ul>
-                    </div>
                 </div>
-                <div class="copyright">
-                    <p>&copy; 2023 Ezweni Funerals (Pty) Ltd. All Rights Reserved.</p>
+                <div class="footer-col">
+                    <h3>Our Services</h3>
+                    <ul>
+                        <li><a href="services.html">Traditional Funerals</a></li>
+                        <li><a href="services.html">Green Funerals</a></li>
+                        <li><a href="services.html">Pre-Planning</a></li>
+                        <li><a href="services.html">Grief Support</a></li>
+                        <li><a href="services.html">Memorial Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Memorial Drive, Johannesburg</li>
+                        <li><i class="fas fa-phone"></i> +27 11 123 4567</li>
+                        <li><i class="fas fa-envelope"></i> info@ezwenifunerals.co.za</li>
+                        <li><i class="fas fa-clock"></i> 24/7 Availability</li>
+                    </ul>
                 </div>
             </div>
-        </footer>
-    `;
+            <div class="copyright">
+                <p>&copy; 2023 Ezweni Funerals (Pty) Ltd. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+`;
     
     // Insert header and footer
     const headerElement = document.getElementById('header');

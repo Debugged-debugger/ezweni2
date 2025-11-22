@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Appointment - Ezweni Funerals | Book Consultation</title>
+    <meta name="description" content="Schedule an appointment with Ezweni Funerals for consultations, pre-planning, or immediate funeral arrangements. Available in-person or virtual.">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .appointment-hero {
+            background: linear-gradient(135deg, var(--primary-green) 0%, #036325 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+        
+        .appointment-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .appointment-option {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .appointment-option:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-gold);
+        }
+        
+        .option-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gold-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 2rem;
+        }
+        
+        .calendar-container {
+            background: var(--pearl-grey);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 50px 0;
+        }
+        
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .time-slot {
+            background: white;
+            border: 2px solid var(--stone-grey);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .time-slot:hover {
+            border-color: var(--accent-gold);
+        }
+        
+        .time-slot.selected {
+            background: var(--primary-green);
+            color: white;
+            border-color: var(--primary-green);
+        }
+        
+        .calendar-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .calendar-day {
+            padding: 15px;
+            text-align: center;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .calendar-day:hover {
+            background: var(--stone-grey);
+        }
+        
+        .calendar-day.selected {
+            background: var(--primary-green);
+            color: white;
+        }
+        
+        .calendar-day.disabled {
+            color: var(--muted-grey);
+            cursor: not-allowed;
+        }
+        
+        .appointment-summary {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 4px solid var(--accent-gold);
+            margin: 30px 0;
+        }
+        
+        .confirmation-step {
+            text-align: center;
+            padding: 50px 0;
+        }
+        
+        .confirmation-icon {
+            font-size: 4rem;
+            color: var(--primary-green);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Appointment Hero -->
+    <section class="appointment-hero">
+        <div class="container">
+            <span class="badge" style="background: var(--accent-gold); color: white;">Schedule Your Visit</span>
+            <h1>Book an Appointment</h1>
+            <p>Schedule a consultation with our compassionate team. Choose between in-person visits or virtual meetings.</p>
+        </div>
+    </section>
+
+    <!-- Appointment Options -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>Choose Appointment Type</h2>
+                <p>Select the type of consultation that works best for you</p>
+            </div>
+            
+            <div class="appointment-options">
+                <div class="appointment-option" data-type="in-person">
+                    <div class="option-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>In-Person Visit</h3>
+                    <p>Visit our funeral home for a personal consultation and tour of our facilities.</p>
+                    <ul style="text-align: left; margin: 20px 0; color: var(--muted-grey);">
+                        <li style="margin-bottom: 10px;">Tour our facilities</li>
+                        <li style="margin-bottom: 10px;">Face-to-face consultation</li>
+                        <li style="margin-bottom: 10px;">View casket and urn options</li>
+                        <li>Meet our team in person</li>
+                    </ul>
+                </div>
+                
+                <div class="appointment-option" data-type="virtual">
+                    <div class="option-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>Virtual Meeting</h3>
+                    <p>Schedule a video consultation from the comfort of your home.</p>
+                    <ul style="text-align: left; margin: 20px 0; color: var(--muted-grey);">
+                        <li style="margin-bottom: 10px;">Video call consultation</li>
+                        <li style="margin-bottom: 10px;">No travel required</li>
+                        <li style="margin-bottom: 10px;">Flexible scheduling</li>
+                        <li>Secure and private</li>
+                    </ul>
+                </div>
+                
+                <div class="appointment-option" data-type="emergency">
+                    <div class="option-icon">
+                        <i class="fas fa-ambulance"></i>
+                    </div>
+                    <h3>Emergency Arrangements</h3>
+                    <p>Immediate assistance for urgent funeral arrangements.</p>
+                    <ul style="text-align: left; margin: 20px 0; color: var(--muted-grey);">
+                        <li style="margin-bottom: 10px;">24/7 availability</li>
+                        <li style="margin-bottom: 10px;">Immediate response</li>
+                        <li style="margin-bottom: 10px;">On-site arrangements</li>
+                        <li>Emergency support</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment Form -->
+    <section class="section-padding" style="background-color: var(--pearl-grey);">
+        <div class="container">
+            <div class="calendar-container">
+                <div class="section-header">
+                    <h2>Select Date & Time</h2>
+                    <p>Choose a convenient time for your appointment</p>
+                </div>
+                
+                <form id="appointmentForm">
+                    <!-- Step 1: Service Type -->
+                    <div class="form-step active" id="step1">
+                        <h3 style="color: var(--primary-green); margin-bottom: 20px;">Service Type</h3>
+                        <div class="form-group">
+                            <label for="serviceType">What service are you interested in? *</label>
+                            <select id="serviceType" name="serviceType" class="form-control" required>
+                                <option value="">Select a service</option>
+                                <option value="pre-planning">Pre-Planning Consultation</option>
+                                <option value="immediate">Immediate Funeral Arrangements</option>
+                                <option value="grief-support">Grief Support Session</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="monument">Monument Services</option>
+                                <option value="transport">Transportation Services</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="appointmentType">Appointment Type *</label>
+                            <select id="appointmentType" name="appointmentType" class="form-control" required>
+                                <option value="">Select type</option>
+                                <option value="in-person">In-Person Visit</option>
+                                <option value="virtual">Virtual Meeting</option>
+                                <option value="emergency">Emergency Arrangements</option>
+                            </select>
+                        </div>
+                        
+                        <div class="text-center" style="margin-top: 30px;">
+                            <button type="button" class="btn btn-primary btn-large next-step" data-next="step2">Continue to Date & Time</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2: Date & Time -->
+                    <div class="form-step" id="step2">
+                        <h3 style="color: var(--primary-green); margin-bottom: 20px;">Select Date & Time</h3>
+                        
+                        <div class="calendar-header">
+                            <h4 id="currentMonth">January 2024</h4>
+                            <div>
+                                <button type="button" class="btn btn-secondary" id="prevMonth">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <button type="button" class="btn btn-secondary" id="nextMonth">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="calendar-grid" id="calendar">
+                            <!-- Calendar will be generated by JavaScript -->
+                        </div>
+                        
+                        <div id="timeSelection" style="display: none;">
+                            <h4 style="color: var(--charcoal); margin-bottom: 15px;">Available Time Slots</h4>
+                            <div class="time-slots" id="timeSlots">
+                                <!-- Time slots will be generated by JavaScript -->
+                            </div>
+                        </div>
+                        
+                        <div class="text-center" style="margin-top: 30px;">
+                            <button type="button" class="btn btn-secondary prev-step" data-prev="step1" style="margin-right: 15px;">
+                                <i class="fas fa-arrow-left"></i> Back
+                            </button>
+                            <button type="button" class="btn btn-primary btn-large next-step" data-next="step3" id="continueToDetails" disabled>
+                                Continue to Details
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3: Personal Details -->
+                    <div class="form-step" id="step3">
+                        <h3 style="color: var(--primary-green); margin-bottom: 20px;">Your Information</h3>
+                        
+                        <div class="appointment-summary" id="appointmentSummary">
+                            <!-- Appointment summary will be filled by JavaScript -->
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="fullName">Full Name *</label>
+                            <input type="text" id="fullName" name="fullName" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="preferredContact">Preferred Contact Method</label>
+                            <select id="preferredContact" name="preferredContact" class="form-control">
+                                <option value="phone">Phone Call</option>
+                                <option value="email">Email</option>
+                                <option value="whatsapp">WhatsApp</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="additionalInfo">Additional Information</label>
+                            <textarea id="additionalInfo" name="additionalInfo" class="form-control" rows="4" placeholder="Please share any specific questions or requirements..."></textarea>
+                        </div>
+                        
+                        <div class="text-center" style="margin-top: 30px;">
+                            <button type="button" class="btn btn-secondary prev-step" data-prev="step2" style="margin-right: 15px;">
+                                <i class="fas fa-arrow-left"></i> Back
+                            </button>
+                            <button type="submit" class="btn btn-primary btn-large">
+                                <i class="fas fa-calendar-check"></i> Schedule Appointment
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 4: Confirmation -->
+                    <div class="form-step" id="step4">
+                        <div class="confirmation-step">
+                            <div class="confirmation-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <h2 style="color: var(--primary-green);">Appointment Scheduled!</h2>
+                            <p style="font-size: 1.2rem; color: var(--muted-grey); margin-bottom: 30px;">
+                                Thank you for scheduling an appointment with Ezweni Funerals.
+                            </p>
+                            <div id="confirmationDetails" style="background: white; padding: 30px; border-radius: 15px; max-width: 500px; margin: 0 auto 30px;">
+                                <!-- Confirmation details will be filled by JavaScript -->
+                            </div>
+                            <p style="color: var(--muted-grey); margin-bottom: 30px;">
+                                We've sent a confirmation email with all the details. Our team will contact you shortly to confirm your appointment.
+                            </p>
+                            <div>
+                                <a href="index.html" class="btn btn-primary" style="margin-right: 15px;">Return to Home</a>
+                                <a href="contact.html" class="btn btn-secondary">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency CTA -->
+    <section class="section-padding" style="background: var(--green-gradient); color: white;">
+        <div class="container">
+            <div class="section-header">
+                <h2 style="color: white;">Need Immediate Assistance?</h2>
+                <p style="color: rgba(255,255,255,0.8);">We're available 24/7 for emergency funeral arrangements</p>
+            </div>
+            <div class="text-center">
+                <a href="tel:+27111234567" class="btn btn-primary btn-large" style="margin-right: 15px;">
+                    <i class="fas fa-phone"></i> Call Emergency Line
+                </a>
+                <a href="contact.html" class="btn btn-secondary">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <script src="js/main.js"></script>
+    <script src="js/appointment.js"></script>
+</body>
+</html>
